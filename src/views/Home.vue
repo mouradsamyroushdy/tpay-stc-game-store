@@ -1,18 +1,95 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="row">
+    <!--(Featured Game)-->
+    <FeaturedGame :game="game"></FeaturedGame>
+
+    <!--(Most Recommendation)-->
+    <GamesList
+      class="mt-4"
+      :games="recommendations"
+      :title="'Most Recommendations'"
+      :link="recommendationsLink"
+    ></GamesList>
+
+    <!--(Most Popular)-->
+    <GamesList
+      class="mt-4"
+      :games="popular"
+      :title="'Most Popular'"
+      :link="popularLink"
+    ></GamesList>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import http from "../services/http";
+
+import FeaturedGame from "../components/FeaturedGame.vue";
+import GamesList from "../components/GamesList.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    FeaturedGame,
+    GamesList
+  },
+  data() {
+    return {
+      game: {
+        description: "SURF the urban wave! DODGE the oncoming trains!",
+        title: "Subway Surfers",
+        company: "SYBO Games",
+        poster:
+          "https://via.placeholder.com/559x300.png/000000/FFFFFF?text=POSTER"
+      },
+      recommendations: null,
+      popular: [
+        {
+          description: "SURF the urban wave! DODGE the oncoming trains!",
+          title: "Subway Surfers",
+          company: "SYBO Games",
+          poster:
+            "https://via.placeholder.com/300x300.png/000000/FFFFFF?text=POSTER"
+        },
+        {
+          description: "SURF the urban wave! DODGE the oncoming trains!",
+          title: "Subway Surfers",
+          company: "SYBO Games",
+          poster:
+            "https://via.placeholder.com/300x300.png/000000/FFFFFF?text=POSTER"
+        },
+        {
+          description: "SURF the urban wave! DODGE the oncoming trains!",
+          title: "Subway Surfers",
+          company: "SYBO Games",
+          poster:
+            "https://via.placeholder.com/300x300.png/000000/FFFFFF?text=POSTER"
+        },
+        {
+          description: "SURF the urban wave! DODGE the oncoming trains!",
+          title: "Subway Surfers",
+          company: "SYBO Games",
+          poster:
+            "https://via.placeholder.com/300x300.png/000000/FFFFFF?text=POSTER"
+        },
+        {
+          description: "SURF the urban wave! DODGE the oncoming trains!",
+          title: "Subway Surfers",
+          company: "SYBO Games",
+          poster:
+            "https://via.placeholder.com/300x300.png/000000/FFFFFF?text=POSTER"
+        }
+      ]
+    };
+  },
+
+  created() {
+    http
+      .get(`/games`)
+      .then(response => {
+        this.recommendations = response.data;
+      })
+      .catch();
   }
 };
 </script>

@@ -1,12 +1,27 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="container">
+    <Header></Header>
   </div>
-  <router-view />
+  <div class="container-fluid  px-0 mx-0">
+    Slider Category Placeholder
+  </div>
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
+<script>
+import Header from "./components/Header.vue";
+export default {
+  name: "App",
+  components: {
+    Header
+  }
+};
+</script>
 <style lang="scss">
+@import "./styles/global.scss";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

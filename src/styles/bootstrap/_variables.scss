@@ -1,0 +1,26 @@
+$primary:#572589;
+
+$border-radius:2px;
+$border-radius-sm:2px;
+$border-radius-lg:2px;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 777px,
+  lg: 777px,
+  xl: 777px,
+  xxl: 777px
+) ;
+
+$grid-gutter-width: 7px;
+$spacer: 1rem !default;
+$gutters: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+@import '~bootstrap/scss/variables';
